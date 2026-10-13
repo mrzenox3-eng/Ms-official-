@@ -1,0 +1,399 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ==========================================================================
+   Light Theme Token Mapping & Visual Polish
+   ========================================================================== */
+:root.light,
+html.light,
+.light {
+  color-scheme: light;
+
+  /* Surface & Container Mapping */
+  --color-slate-950: #f8fafc; /* Main Canvas Background (slate-50) */
+  --color-slate-900: #ffffff; /* Card / Modal / Drawer / Nav Surfaces (pure white) */
+  --color-slate-850: #f1f5f9; /* Sub-card / Elevated item background */
+  --color-slate-800: #e2e8f0; /* Default border color (slate-200) */
+  --color-slate-700: #cbd5e1; /* Secondary border / hover border (slate-300) */
+  --color-slate-600: #94a3b8; /* Muted icons / subtle dividers */
+  --color-slate-500: #64748b; /* Subtle metadata text (slate-500) */
+  --color-slate-400: #475569; /* Secondary body text (slate-600) */
+  --color-slate-300: #334155; /* Normal text (slate-700) */
+  --color-slate-200: #1e293b; /* Strong text (slate-800) */
+  --color-slate-100: #0f172a; /* Deepest contrast text (slate-900) */
+  --color-slate-50: #020617;  /* High contrast inverted */
+}
+
+.light {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Text white in light mode outside of filled buttons */
+.light .text-white {
+  color: #0f172a;
+}
+
+/* Keep white text on filled accent buttons & banners */
+.light button[class*="bg-emerald-"],
+.light a[class*="bg-emerald-"],
+.light [class*="bg-emerald-600"],
+.light [class*="bg-emerald-500"],
+.light button[class*="bg-red-"],
+.light a[class*="bg-red-"],
+.light [class*="bg-red-600"],
+.light [class*="bg-red-500"],
+.light button[class*="bg-amber-600"],
+.light [class*="bg-blue-600"],
+.light .force-text-white {
+  color: #ffffff !important;
+}
+
+.light button[class*="bg-emerald-"] .text-white,
+.light button[class*="bg-emerald-"] span,
+.light button[class*="bg-red-"] .text-white,
+.light button[class*="bg-red-"] span,
+.light a[class*="bg-emerald-"] span,
+.light a[class*="bg-red-"] span {
+  color: #ffffff;
+}
+
+/* Card and container elevation in light mode */
+.light .bg-slate-900,
+.light .bg-slate-900\/90,
+.light .bg-slate-900\/80 {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark black elements in dark theme become soft light surfaces */
+.light .bg-black {
+  background-color: #f1f5f9 !important;
+}
+
+/* Form inputs and textareas in light mode */
+.light input,
+.light textarea,
+.light select {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Modal and Drawer backdrop in light mode */
+.light .fixed.inset-0.bg-slate-950\/85,
+.light .fixed.inset-0.bg-slate-950\/80,
+.light .fixed.inset-0.bg-slate-950\/90,
+.light .fixed.inset-0.bg-black\/80 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+}
+
+/* Modal dialog containers in light mode */
+.light .fixed .bg-slate-900 {
+  background-color: #ffffff !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Sub-panels inside modals */
+.light .bg-slate-950 {
+  background-color: #f8fafc;
+}
+
+/* Soft badge background contrast in light mode */
+.light .bg-emerald-950,
+.light .bg-emerald-950\/40,
+.light .bg-emerald-950\/50,
+.light .bg-emerald-950\/60 {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+.light .bg-red-950,
+.light .bg-red-950\/40,
+.light .bg-red-950\/60 {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+.light .bg-amber-950,
+.light .bg-amber-950\/40,
+.light .bg-amber-950\/60 {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+}
+
+/* Light mode scrollbar */
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.25);
+}
+.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.45);
+}
+
+/* ==========================================================================
+   Royal Pine & Gold Theme Token Mapping (Imperial Forest & Gold)
+   ========================================================================== */
+:root[data-theme="emerald"],
+html[data-theme="emerald"],
+.theme-emerald {
+  color-scheme: dark;
+  --color-slate-950: #041c14; /* Deep forest black canvas */
+  --color-slate-900: #072a1e; /* Rich pine card surface */
+  --color-slate-850: #0b3829; /* Sub-card surface */
+  --color-slate-800: #114a38; /* Pine border */
+  --color-slate-700: #1b634c; /* Hover pine border */
+  --color-slate-600: #2a8164; /* Muted icons/dividers */
+  --color-slate-500: #52a688; /* Subtle metadata */
+  --color-slate-400: #88c9af; /* Secondary text */
+  --color-slate-300: #b8e5d3; /* Body text */
+  --color-slate-200: #ddf5ea; /* High contrast */
+  --color-slate-100: #f0fcf6; /* Strong text */
+}
+
+.theme-emerald ::-webkit-scrollbar-thumb {
+  background: rgba(39, 130, 99, 0.3);
+}
+.theme-emerald ::-webkit-scrollbar-thumb:hover {
+  background: rgba(39, 130, 99, 0.5);
+}
+
+/* ==========================================================================
+   Cyber Sapphire Theme Token Mapping (Deep Marine & Neon Cyan)
+   ========================================================================== */
+:root[data-theme="sapphire"],
+html[data-theme="sapphire"],
+.theme-sapphire {
+  color-scheme: dark;
+  --color-slate-950: #030c1d; /* Deep marine canvas */
+  --color-slate-900: #071733; /* Polished sapphire card surface */
+  --color-slate-850: #0b2149; /* Sub-card surface */
+  --color-slate-800: #122e63; /* Cobalt border */
+  --color-slate-700: #1c428c; /* Hover border */
+  --color-slate-600: #2c5ebc; /* Muted cobalt icons */
+  --color-slate-500: #5384e5; /* Subtle metadata */
+  --color-slate-400: #8bb3f8; /* Secondary text */
+  --color-slate-300: #b9d2fc; /* Body text */
+  --color-slate-200: #dce9fd; /* High contrast */
+  --color-slate-100: #f0f6ff; /* Strong text */
+}
+
+.theme-sapphire ::-webkit-scrollbar-thumb {
+  background: rgba(44, 94, 188, 0.3);
+}
+.theme-sapphire ::-webkit-scrollbar-thumb:hover {
+  background: rgba(44, 94, 188, 0.5);
+}
+
+/* ==========================================================================
+   Sunset Espresso Theme Token Mapping (Dark Espresso & Amber Bronze)
+   ========================================================================== */
+:root[data-theme="amber"],
+html[data-theme="amber"],
+.theme-amber {
+  color-scheme: dark;
+  --color-slate-950: #170e08; /* Dark roasted espresso canvas */
+  --color-slate-900: #24160e; /* Rich mahogany card surface */
+  --color-slate-850: #311f14; /* Sub-card surface */
+  --color-slate-800: #452c1c; /* Bronze border */
+  --color-slate-700: #5e3c27; /* Hover border */
+  --color-slate-600: #835438; /* Muted bronze icons */
+  --color-slate-500: #a9714e; /* Subtle metadata */
+  --color-slate-400: #cca282; /* Secondary text */
+  --color-slate-300: #e5cba9; /* Body text */
+  --color-slate-200: #f4e7d5; /* High contrast */
+  --color-slate-100: #fdf8f2; /* Strong text */
+}
+
+.theme-amber ::-webkit-scrollbar-thumb {
+  background: rgba(131, 84, 56, 0.35);
+}
+.theme-amber ::-webkit-scrollbar-thumb:hover {
+  background: rgba(131, 84, 56, 0.55);
+}
+
+/* Custom smooth scroll and scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* ==========================================================================
+   MS Official Splash Screen Animations
+   ========================================================================== */
+@keyframes splashShimmer {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(180%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   MS Official — Liquid Glass Midnight Navy & Ocean Blue Palette
+   (#07111F / #0D1B2A / #4DA3FF / #63F5E8 / #F5F8FF / #A8B5C7)
+   ========================================================================== */
+:root[data-theme="fintech"],
+html[data-theme="fintech"],
+.theme-fintech,
+:root {
+  color-scheme: dark;
+  --color-slate-950: #07111F; /* Primary Background: Deep Midnight Navy */
+  --color-slate-900: #0D1B2A; /* Secondary Background: Dark Ocean Blue */
+  --color-slate-850: #112338; /* Surface: Liquid Glass Elevated Surface */
+  --color-slate-800: #1A3452; /* Border: Subtle Translucent Glass Border */
+  --color-slate-700: #294E78; /* Hover Border */
+  --color-slate-600: #426F9E; /* Muted Elements */
+  --color-slate-500: #6B91B8; /* Subtle Metadata */
+  --color-slate-400: #A8B5C7; /* Secondary Text: Cool Gray */
+  --color-slate-300: #CBD5E1; /* Body Text */
+  --color-slate-200: #E6EFF9; /* High Contrast */
+  --color-slate-100: #F5F8FF; /* Main Text: Soft White */
+}
+
+/* ==========================================================================
+   Liquid Glass UI Component System & Realistic Reflections
+   ========================================================================== */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  position: relative;
+}
+
+.liquid-glass-elevated {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 14px 44px 0 rgba(0, 0, 0, 0.45);
+  position: relative;
+}
+
+.liquid-glass-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.liquid-specular {
+  position: relative;
+}
+.liquid-specular::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  pointer-events: none;
+}
+
+.liquid-gradient-text {
+  background: linear-gradient(135deg, #F5F8FF 0%, #4DA3FF 50%, #63F5E8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.liquid-gradient-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(77, 163, 255, 0.16) 0%, rgba(99, 245, 232, 0.08) 50%, transparent 70%);
+}
+
+.light .liquid-glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(203, 213, 225, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(148, 163, 184, 0.16);
+}
+
+.light .liquid-glass-elevated {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  box-shadow: 0 14px 40px 0 rgba(148, 163, 184, 0.22);
+}
+
+.light .liquid-gradient-text {
+  background: linear-gradient(135deg, #07111F 0%, #1D4ED8 50%, #0284C7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.04); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Mobile Phone Full Viewport Fit & Safe Area Inset Support
+   ========================================================================== */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 0.25rem);
+  }
+}
+
+
+

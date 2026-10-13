@@ -1,0 +1,6 @@
+{
+  "name": "MS Official",
+  "description": "MS Official — Attendance, Packages, Referral Rewards & Wallet Platform with Dedicated Admin Management",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
